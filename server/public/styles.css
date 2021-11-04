@@ -1,0 +1,42 @@
+.righteous {
+  font-family: Righteous, cursive, "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+.crete {
+  font-family: "Crete Round", serif, "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+.white-txt {
+  color: white;
+}
+
+.cornflower {
+  background-color: cornflowerblue;
+}
+
+.pale {
+  background-color: paleturquoise;
+}
+
+.homepage-header {
+  width: 100%;
+  position: relative;
+  background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Tomorrowland-2017-2.jpg/1200px-Tomorrowland-2017-2.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 700px;
+  background-blend-mode: multiply;
+  background-color: rgba(0 0 0 / 40%);
+  box-shadow: 0 12px 10px -10px rgb(0 0 0);
+}
+
+.card {
+  border-radius: 25%;
+}
+
+.card-img-top {
+  width: 100%;
+  height: 20vw;
+  object-fit: cover;
+}
