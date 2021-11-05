@@ -48,3 +48,14 @@
 .header-txt {
   font-size: 4rem;
 }
+
+.image {
+  width: 100%;
+  height: 350px;
+  object-fit: contain;
+}
+
+.google-map {
+  height: 100vh;
+  width: 100%;
+}

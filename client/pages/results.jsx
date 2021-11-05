@@ -2,13 +2,14 @@
 import React from 'react';
 
 function Result(props) {
-  const { short_title, venue, url, datetime_local } = props.concert;
+  const { short_title, venue, datetime_local, id } = props.concert;
   const year = datetime_local.slice(0, 4);
   const month = datetime_local.slice(5, 7);
   const day = datetime_local.slice(8, 10);
+  const eventDetails = `#event?eventId=${id}`;
   return (
     <a
-      href={url}
+      href={eventDetails}
       className="text-dark card mb-4 shadow-sm text-decoration-none">
       <div className="card-body cornflower rounded shadow">
         <h5 className="card-title white-txt">{short_title}</h5>
