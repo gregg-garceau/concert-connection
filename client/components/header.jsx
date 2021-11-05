@@ -43,8 +43,8 @@ class NavBar extends React.Component {
             </Offcanvas.Header>
             <Offcanvas.Body>
               <Nav className="justify-content-end flex-grow-1 pe-3">
-                <Nav.Link href="#">Home</Nav.Link>
-                <Nav.Link href="#">Saved Concerts</Nav.Link>
+                <a href="#">Home</a>
+                <a href="#">Saved Concerts</a>
               </Nav>
               <Form className="d-flex" onSubmit={this.handleSubmit}>
                 <FormControl
@@ -58,8 +58,8 @@ class NavBar extends React.Component {
                 <Button type="submit" variant="outline-success">Search</Button>
               </Form>
               <Nav className="justify-content-end flex-grow-1 pe-3">
-                <Nav.Link href="https://github.com/gregg-garceau">GitHub</Nav.Link>
-                <Nav.Link href="https://www.linkedin.com/in/ggarceau/">LinkedIn</Nav.Link>
+                <a href="https://github.com/gregg-garceau">GitHub</a>
+                <a href="https://www.linkedin.com/in/ggarceau/">LinkedIn</a>
               </Nav>
             </Offcanvas.Body>
           </Navbar.Offcanvas>

@@ -10,8 +10,10 @@ export default class App extends React.Component {
     super(props);
     this.state = {
       route: parseRoute(window.location.hash),
-      concerts: []
+      concerts: [],
+      search: ''
     };
+    this.search = this.search.bind(this);
   }
 
   componentDidMount() {
@@ -28,10 +30,12 @@ export default class App extends React.Component {
     fetch('https://api.seatgeek.com/2/events?q=' + artistName + '&client_id=MjQyNjE3MTd8MTYzNTk2NTg3MS40NzI3Mjg3')
       .then(res => res.json())
       .then(
-        concerts => {
-          // This console log shows the data that the user will get from the search
-          // eslint-disable-next-line no-console
-          console.log(concerts);
+        data => {
+          this.setState({
+            concerts: data.events,
+            search: artistName
+          });
+          window.location.hash = '#results';
         }
       );
   }
@@ -42,7 +46,7 @@ export default class App extends React.Component {
       return <Home />;
     }
     if (route.path === 'results') {
-      return <Results />;
+      return <Results search={this.state.search} concerts={this.state.concerts}/>;
     }
   }
 
