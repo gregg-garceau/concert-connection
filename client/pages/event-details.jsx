@@ -17,7 +17,7 @@ export default class EventDetails extends React.Component {
   render() {
     if (!this.state.product) return null;
     const {
-      name, imageUrl, price, shortDescription, longDescription
+      name, shortDescription, longDescription
     } = this.state.product;
     return (
       <div className="container">

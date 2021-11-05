@@ -20,7 +20,6 @@ function Result(props) {
 }
 
 function Results(props) {
-  console.log(props);
   const searchTerm = props.search;
   return (
     <div className="container">
