@@ -2,6 +2,7 @@ import React from 'react';
 import NavBar from './components/header';
 import Home from './pages/home';
 import Results from './pages/results';
+import EventDetails from './pages/event-details';
 import { parseRoute } from './lib';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -47,6 +48,9 @@ export default class App extends React.Component {
     }
     if (route.path === 'results') {
       return <Results search={this.state.search} concerts={this.state.concerts}/>;
+    }
+    if (route.path === 'event') {
+      return <EventDetails />;
     }
   }
 
