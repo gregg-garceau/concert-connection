@@ -11,14 +11,52 @@ export default class EventDetails extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      event: null
+      event: null,
+      level: null
     };
   }
 
   componentDidMount() {
     fetch(`https://api.seatgeek.com/2/events/${this.props.eventId}?client_id=MjQyNjE3MTd8MTYzNTk2NTg3MS40NzI3Mjg3`)
       .then(res => res.json())
-      .then(event => this.setState({ event }));
+      .then(event => {
+        fetch(`https://api.covidactnow.org/v2/state/${event.venue.state}.json?apiKey=5c0694cbb96c4c328b917a548dc3ac86`)
+          .then(res => res.json())
+          .then(data => this.setState({
+            level: data.cdcTransmissionLevel,
+            event: event
+          }));
+      });
+  }
+
+  getRiskLevel() {
+    const level = this.state.level;
+    if (level === 0) {
+      return 'LOW';
+    } else if (level === 1) {
+      return 'MODERATE';
+    } else if (level === 2) {
+      return 'SUBSTANTIAL';
+    } else if (level === 3) {
+      return 'HIGH';
+    } else {
+      return 'UNKNOWN';
+    }
+  }
+
+  riskColor() {
+    const level = this.state.level;
+    if (level === 0) {
+      return 'green';
+    } else if (level === 1) {
+      return 'yellow';
+    } else if (level === 2) {
+      return 'orange';
+    } else if (level === 3) {
+      return 'red';
+    } else {
+      return 'purple';
+    }
   }
 
   render() {
@@ -37,7 +75,7 @@ export default class EventDetails extends React.Component {
     };
     return (
       <div className="container">
-        <div className="card shadow my-5">
+        <div className="card shadow my-5 crete">
           <div className="card-body">
             <div className="row">
               <div className="col">
@@ -60,12 +98,13 @@ export default class EventDetails extends React.Component {
                 </LoadScript>
               </div>
               <div className="col-4 col-sm-4 col-md-4 col-lg-4">
-                <h2>{short_title}</h2>
+                <h2 className="title-txt">{short_title}</h2>
                 <p>{performers[0].name}</p>
                 <p>{venue.name}</p>
                 <p>{venue.display_location}</p>
                 <p>{month}/{day}/{year}</p>
-                <p>Covid-19 Trend: </p>
+                <p>Covid-19 Risk: <span className={this.riskColor()}>{this.getRiskLevel()}</span></p>
+                <p>(See <a className="text-decoration-none" href="https://covid.cdc.gov/covid-data-tracker/#cases_community">CDC Covid Data Tracker</a> for more details)</p>
               </div>
             </div>
           </div>

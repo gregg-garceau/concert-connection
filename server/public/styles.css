@@ -22,8 +22,28 @@
   background-color: paleturquoise;
 }
 
-.lightgray {
-  background-color: lightgray;
+.green {
+  color: green;
+}
+
+.yellow {
+  color: yellow;
+}
+
+.orange {
+  color: orange;
+}
+
+.red {
+  color: red;
+}
+
+.purple {
+  color: purple;
+}
+
+.title-txt {
+  color: cornflowerblue;
 }
 
 .homepage-header {
