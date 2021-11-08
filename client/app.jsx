@@ -50,7 +50,8 @@ export default class App extends React.Component {
       return <Results search={this.state.search} concerts={this.state.concerts}/>;
     }
     if (route.path === 'event') {
-      return <EventDetails />;
+      const eventId = route.params.get('eventId');
+      return <EventDetails eventId={eventId} />;
     }
   }
 
