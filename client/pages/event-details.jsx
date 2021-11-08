@@ -47,7 +47,7 @@ export default class EventDetails extends React.Component {
               </div>
             </div>
             <div className="row mb-4">
-              <div className="col-12 col-sm-6 col-md-5 col-lg-5">
+              <div className="col-8 col-sm-8 col-md-8 col-lg-8">
                 <LoadScript
                   googleMapsApiKey="AIzaSyBgxhRhkLySMNvsoH2O8p7XM3YfEWgDJng"
                 >
@@ -59,12 +59,13 @@ export default class EventDetails extends React.Component {
                   </GoogleMap>
                 </LoadScript>
               </div>
-              <div className="col-12 col-sm-6 col-md-5 col-lg-5">
+              <div className="col-4 col-sm-4 col-md-4 col-lg-4">
                 <h2>{short_title}</h2>
                 <p>{performers[0].name}</p>
                 <p>{venue.name}</p>
                 <p>{venue.display_location}</p>
                 <p>{month}/{day}/{year}</p>
+                <p>Covid-19 Trend: </p>
               </div>
             </div>
           </div>

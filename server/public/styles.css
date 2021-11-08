@@ -22,6 +22,10 @@
   background-color: paleturquoise;
 }
 
+.lightgray {
+  background-color: lightgray;
+}
+
 .homepage-header {
   width: 100%;
   position: relative;
