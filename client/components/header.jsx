@@ -39,14 +39,14 @@ class NavBar extends React.Component {
             placement="end"
           >
             <Offcanvas.Header closeButton>
-              <Offcanvas.Title id="offcanvasNavbarLabel">Menu</Offcanvas.Title>
+              <Offcanvas.Title id="offcanvasNavbarLabel" className="righteous">Menu</Offcanvas.Title>
             </Offcanvas.Header>
             <Offcanvas.Body>
-              <Nav className="justify-content-end flex-grow-1 pe-3">
-                <a href="#">Home</a>
-                <a href="#">Saved Concerts</a>
+              <Nav className="justify-content-end flex-grow-1 pe-3 crete">
+                <a className="text-decoration-none mb-2" href="#">Home</a>
+                <a className="text-decoration-none mb-2" href="#">Saved Concerts</a>
               </Nav>
-              <Form className="d-flex" onSubmit={this.handleSubmit}>
+              <Form className="d-flex mb-2 crete" onSubmit={this.handleSubmit}>
                 <FormControl
                   type="text"
                   value={value}
@@ -57,9 +57,9 @@ class NavBar extends React.Component {
                 />
                 <Button type="submit" variant="outline-success">Search</Button>
               </Form>
-              <Nav className="justify-content-end flex-grow-1 pe-3">
-                <a href="https://github.com/gregg-garceau">GitHub</a>
-                <a href="https://www.linkedin.com/in/ggarceau/">LinkedIn</a>
+              <Nav className="justify-content-end flex-grow-1 pe-3 crete">
+                <a className="text-decoration-none mb-2" href="https://github.com/gregg-garceau">GitHub</a>
+                <a className="text-decoration-none" href="https://www.linkedin.com/in/ggarceau/">LinkedIn</a>
               </Nav>
             </Offcanvas.Body>
           </Navbar.Offcanvas>
