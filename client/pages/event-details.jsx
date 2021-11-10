@@ -14,6 +14,7 @@ export default class EventDetails extends React.Component {
       event: null,
       level: null
     };
+    this.handleFavorite = this.handleFavorite.bind(this);
   }
 
   componentDidMount() {
@@ -27,6 +28,38 @@ export default class EventDetails extends React.Component {
             event: event
           }));
       });
+  }
+
+  handleFavorite(event) {
+    const {
+      short_title, datetime_local, venue, performers
+    } = this.state.event;
+    const year = datetime_local.slice(0, 4);
+    const month = datetime_local.slice(5, 7);
+    const day = datetime_local.slice(8, 10);
+
+    const newFavorite = {
+      eventName: short_title,
+      artistName: performers[0].name,
+      venueName: venue.name,
+      eventLocation: venue.display_location,
+      eventDate: `${month}/${day}/${year}`,
+      covidRisk: this.state.level.toString()
+    };
+
+    fetch('/api/events', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(newFavorite)
+    })
+      .then(res => res.json())
+      .then(
+        data => {
+          // eslint-disable-next-line no-console
+          console.log(data);
+        });
   }
 
   getRiskLevel() {
@@ -81,6 +114,11 @@ export default class EventDetails extends React.Component {
               <div className="col">
                 <a href="#" className="btn text-secondary">
                   &lt; Home Page
+                </a>
+              </div>
+              <div className="col">
+                <a className="btn text-secondary" onClick={this.handleFavorite}>
+                  &hearts; Favorite
                 </a>
               </div>
             </div>
