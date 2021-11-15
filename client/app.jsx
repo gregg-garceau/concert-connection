@@ -2,6 +2,7 @@ import React from 'react';
 import NavBar from './components/header';
 import Home from './pages/home';
 import Results from './pages/results';
+import Saved from './pages/saved';
 import EventDetails from './pages/event-details';
 import { parseRoute } from './lib';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -52,6 +53,9 @@ export default class App extends React.Component {
     if (route.path === 'event') {
       const eventId = route.params.get('eventId');
       return <EventDetails eventId={eventId} />;
+    }
+    if (route.path === 'saved') {
+      return <Saved />;
     }
   }
 

@@ -26,10 +26,11 @@ app.get('/api/events', (req, res, next) => {
   const sql = `
     select *
       from "events"
-  order by "eventId"
-  where "userId" = ${userId}
+     where "userId" = $1
+  order by "eventId";
   `;
-  db.query(sql)
+  const params = [userId];
+  db.query(sql, params)
     .then(result => {
       res.json(result.rows);
     })
@@ -38,13 +39,13 @@ app.get('/api/events', (req, res, next) => {
 
 app.post('/api/events', (req, res, next) => {
   const userId = 1;
-  const { eventName, artistName, venueName, eventLocation, eventDate, covidRisk } = req.body;
+  const { eventName, artistName, venueName, eventLocation, eventDate, covidRisk, resultId } = req.body;
   const sql = `
-    insert into "events" ("userId", "eventName", "artistName", "venueName", "eventLocation", "eventDate", "covidRisk")
-         values ($1, $2, $3, $4, $5, $6, $7)
+    insert into "events" ("userId", "eventName", "artistName", "venueName", "eventLocation", "eventDate", "covidRisk", "resultId")
+         values ($1, $2, $3, $4, $5, $6, $7, $8)
       returning *
   `;
-  const params = [userId, eventName, artistName, venueName, eventLocation, eventDate, covidRisk];
+  const params = [userId, eventName, artistName, venueName, eventLocation, eventDate, covidRisk, resultId];
   db.query(sql, params)
     .then(result => {
       const [event] = result.rows;

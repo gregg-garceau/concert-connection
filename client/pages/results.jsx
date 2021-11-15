@@ -29,7 +29,7 @@ function Results(props) {
         {
           props.concerts.map(concert => {
             return (
-              <div key={concert.id} className="col-12 col-md-6 col-lg-6">
+              <div key={concert.id} className="col-12 col-md-6 col-lg-6 result">
                 <Result concert={concert} />
               </div>
             );

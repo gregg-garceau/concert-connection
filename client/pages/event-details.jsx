@@ -32,7 +32,7 @@ export default class EventDetails extends React.Component {
 
   handleFavorite(event) {
     const {
-      short_title, datetime_local, venue, performers
+      short_title, datetime_local, venue, performers, id
     } = this.state.event;
     const year = datetime_local.slice(0, 4);
     const month = datetime_local.slice(5, 7);
@@ -44,7 +44,8 @@ export default class EventDetails extends React.Component {
       venueName: venue.name,
       eventLocation: venue.display_location,
       eventDate: `${month}/${day}/${year}`,
-      covidRisk: this.state.level.toString()
+      covidRisk: this.state.level.toString(),
+      resultId: id
     };
 
     fetch('/api/events', {

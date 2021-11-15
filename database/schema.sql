@@ -22,6 +22,7 @@ CREATE TABLE "events" (
 	"eventLocation" TEXT NOT NULL,
 	"eventDate" TEXT NOT NULL,
 	"covidRisk" TEXT NOT NULL,
+  "resultId" integer NOT NULL,
 	CONSTRAINT "events_pk" PRIMARY KEY ("eventId")
 ) WITH (
   OIDS=FALSE

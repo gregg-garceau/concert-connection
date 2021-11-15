@@ -44,7 +44,7 @@ class NavBar extends React.Component {
             <Offcanvas.Body>
               <Nav className="justify-content-end flex-grow-1 pe-3 crete">
                 <a className="text-decoration-none mb-2" href="#">Home</a>
-                <a className="text-decoration-none mb-2" href="#">Saved Concerts</a>
+                <a className="text-decoration-none mb-2" href="#saved">Saved Concerts</a>
               </Nav>
               <Form className="d-flex mb-2 crete" onSubmit={this.handleSubmit}>
                 <FormControl
