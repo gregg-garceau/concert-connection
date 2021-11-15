@@ -118,7 +118,7 @@ export default class EventDetails extends React.Component {
                 </a>
               </div>
               <div className="col">
-                <a className="btn text-secondary" onClick={this.handleFavorite}>
+                <a href="#saved" className="btn text-secondary" onClick={this.handleFavorite}>
                   &hearts; Favorite
                 </a>
               </div>
