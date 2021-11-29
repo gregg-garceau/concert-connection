@@ -15,6 +15,7 @@ export default class EventDetails extends React.Component {
       level: null
     };
     this.handleFavorite = this.handleFavorite.bind(this);
+    this.handleUnfavorite = this.handleUnfavorite.bind(this);
   }
 
   componentDidMount() {
@@ -54,6 +55,25 @@ export default class EventDetails extends React.Component {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(newFavorite)
+    })
+      .then(res => res.json())
+      .then(
+        data => {
+          // eslint-disable-next-line no-console
+          console.log(data);
+        });
+  }
+
+  handleUnfavorite(event) {
+    const resultId = this.state.event.id;
+    const data = { resultId: resultId };
+
+    fetch(`/api/events/${resultId}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
     })
       .then(res => res.json())
       .then(
@@ -118,8 +138,13 @@ export default class EventDetails extends React.Component {
                 </a>
               </div>
               <div className="col">
-                <a href="#saved" className="btn text-secondary" onClick={this.handleFavorite}>
+                <a className="btn text-secondary" onClick={this.handleFavorite}>
                   &hearts; Favorite
+                </a>
+              </div>
+              <div className="col">
+                <a className="btn text-secondary" onClick={this.handleUnfavorite}>
+                  Unfavorite
                 </a>
               </div>
             </div>

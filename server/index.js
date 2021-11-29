@@ -54,6 +54,26 @@ app.post('/api/events', (req, res, next) => {
     .catch(err => next(err));
 });
 
+app.delete('/api/events/:resultId', (req, res, next) => {
+  const userId = 1;
+  const { resultId } = req.body;
+
+  const sql = `
+    delete from "events"
+    where ("resultId" = $1 AND "userId" = $2)
+    returning *;
+  `;
+
+  const params = [resultId, userId];
+
+  db.query(sql, params)
+    .then(result => {
+      const event = result.rows;
+      res.status(201).json(event);
+    })
+    .catch(err => next(err));
+});
+
 app.listen(process.env.PORT, () => {
   // eslint-disable-next-line no-console
   console.log(`express server listening on port ${process.env.PORT}`);
